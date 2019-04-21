@@ -44,7 +44,17 @@ or
 ```
 npm start
 ```
+## Annotations
+* .Net Core
+* React
+* Rematch
+* AntDesign
+* Responsive design
+* Entity Framework Core Code first 
+* Entity Framework Core Migrations (Migrations in Gap.Clinic.Persistence)
+* Dependency injection
+* Onnion architecture
+* Sql Server
 
 ## License
-
 MIT
