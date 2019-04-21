@@ -42,6 +42,7 @@
             services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<IAppointmentTypeRepository, AppointmentTypeRepository>();
+            services.AddScoped<IInclude, Include>();
         }
 
         private static void Core(this IServiceCollection services)

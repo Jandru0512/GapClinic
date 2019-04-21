@@ -16,7 +16,6 @@ function useForm(id) {
         setAppointment(appointments.data || {});
         setAppointmentTypes(documents.data || []);
         setPatients(users.data || []);
-        console.log(users.data);
       })
       .catch(e => {
         setLoading(false);

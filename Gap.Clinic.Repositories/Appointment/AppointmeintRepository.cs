@@ -11,16 +11,22 @@
     public class AppointmentRepository : GenericRepository<Appointment>, IAppointmentRepository
     {
         #region Constructor
-        public AppointmentRepository(ClinicContext context) : base(context)
+        public AppointmentRepository(ClinicContext context, IInclude include) : base(context)
         {
-
+            _include = include;
         }
+        #endregion
+
+        #region Private Attributes
+        private readonly IInclude _include;
         #endregion
 
         #region Public Methods
         public async Task<List<Appointment>> List()
         {
-            List<Appointment> appointments = await GetAllAsync();
+            _include.Add(nameof(Appointment.Patient));
+            _include.Add(nameof(Appointment.AppointmentType));
+            List<Appointment> appointments = await GetAllAsync(_include.Get());
             return appointments.OrderBy(x=>x.Status).ThenByDescending(x=>x.Date).ToList();
         }
 

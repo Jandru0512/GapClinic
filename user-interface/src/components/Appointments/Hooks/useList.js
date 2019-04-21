@@ -10,7 +10,13 @@ function useList() {
     list()
       .then(response => {
         setLoading(false);
-        setDataSource(response.data);
+        console.log(response.data);
+        setDataSource(response.data.map(x => ({
+          ...x,
+          name: `${x.patient.name} ${x.patient.lastName}`,
+          hour: x.date.split('T')[1],
+          date: x.date.split('T')[0]
+        })));
       })
       .catch(e => {
         setLoading(false);

@@ -32,14 +32,12 @@
         public async Task Delete(int appointmentId)
         {
             Appointment appointment = await _appointmentRepository.Get(appointmentId);
-            TimeSpan hours = appointment.Date.Subtract(DateTime.Now);
-            //if (<)
-            //{
+            if (appointment.Date.Subtract(DateTime.Now).TotalHours<24)
+            {
+                throw new Exception("Las citas deben cancelarse con mínimo 24 horas de anticipación.");
+            }
 
-            //}
-            //Todo: validación cancelación
-            
-            //await _appointmentRepository.Delete(appointmentId);
+            await _appointmentRepository.Delete(appointmentId);
         }
 
         public async Task Create(Appointment appointment)
@@ -52,9 +50,13 @@
             await _appointmentRepository.Create(appointment);
         }
 
-        public async Task Update(Appointment patient)
+        public async Task Update(Appointment appointment)
         {
-            await _appointmentRepository.Update(patient);
+            if ((await _appointmentRepository.Get(appointment.Date)) != null)
+            {
+                throw new Exception("El usuario ya posee una cita para esta fecha");
+            }
+            await _appointmentRepository.Update(appointment);
         }
         #endregion
     }

@@ -29,19 +29,16 @@ const Appointment = ({ match, history }) => {
           const newAppointment = {
             ...appointment,
             appointmentTypeId: values.appointmentTypeId,
-            // document: values.document,
-            // name: values.name,
-            // lastName: values.lastName,
-            // email: values.email,
-            // status: values.status,
-            // birthDate: values.birthdate.format()
+            patientId: values.patientId,
+            status: values.status,
+            date: values.date.format()
           };
           update(newAppointment)
             .then(res => {
               response('Cita modificada con éxito.', true);
             })
             .catch(err => {
-              response('Error al modificar la cita.');
+              response(err.response.data);
             });
         } else {
           create(values)
@@ -49,7 +46,7 @@ const Appointment = ({ match, history }) => {
               response('Cita creada con éxito.', true);
             })
             .catch(err => {
-              response('Error al crear la cita.');
+              response(err.response.data);
             });
         }
       }

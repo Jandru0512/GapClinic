@@ -10,5 +10,7 @@
         public bool Status { get; set; }
         public DateTime Date { get; set; }
         public DateTime CreationDate { get; set; }
+        public virtual Patient Patient { get; set; }
+        public virtual AppointmentType AppointmentType { get; set; }
     }
 }
