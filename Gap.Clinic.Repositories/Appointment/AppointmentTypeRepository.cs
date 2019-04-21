@@ -5,8 +5,9 @@
     using System.Threading.Tasks;
     using Models;
     using Persistence;
+    using Services;
 
-    public class AppointmentTypeRepository: GenericRepository<AppointmentType>
+    public class AppointmentTypeRepository : GenericRepository<AppointmentType>, IAppointmentTypeRepository
     {
         #region Constructor
         public AppointmentTypeRepository(ClinicContext context): base(context)

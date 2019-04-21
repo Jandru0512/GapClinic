@@ -1,10 +1,12 @@
 ﻿namespace Gap.Clinic.Repositories
 {
-    using Persistence;
-    using Models;
+    using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
     using System.Linq;
+    using System.Threading.Tasks;
+    using Models;
+    using Persistence;
+    using Services;
 
     public class AppointmentRepository : GenericRepository<Appointment>, IAppointmentRepository
     {
@@ -24,7 +26,13 @@
 
         public async Task<Appointment> Get(int appointmentId)
         {
-            Appointment appointment = (await FindByAsync(x => x.PatientId == appointmentId)).FirstOrDefault();
+            Appointment appointment = (await FindByAsync(x => x.AppointmentId == appointmentId)).FirstOrDefault();
+            return appointment;
+        }
+
+        public async Task<Appointment> Get(DateTime date)
+        {
+            Appointment appointment = (await FindByAsync(x => x.Date.Date == date.Date)).FirstOrDefault();
             return appointment;
         }
 

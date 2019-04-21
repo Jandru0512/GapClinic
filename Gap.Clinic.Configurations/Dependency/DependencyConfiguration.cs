@@ -40,6 +40,8 @@
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IDocumentTypeRepository, DocumentTypeRepository>();
+            services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IAppointmentTypeRepository, AppointmentTypeRepository>();
         }
 
         private static void Core(this IServiceCollection services)
@@ -47,6 +49,8 @@
             services.AddScoped<IPatientBr, PatientBr>();
             services.AddScoped<IAuthenticationBr, AuthenticationBr>();
             services.AddScoped<IDocumentTypeBr, DocumentTypeBr>();
+            services.AddScoped<IAppointmentBr, AppointmentBr>();
+            services.AddScoped<IAppointmentTypeBr, AppointmentTypeBr>();
         }
         #endregion
     }
