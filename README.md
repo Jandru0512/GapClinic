@@ -5,6 +5,7 @@ GAP Clinic is an application to manage patients and clinical appointments.
 * VisualStudio 2017
 * .NET Core 2.1
 * NodeJs 10.15.3
+* SqlServer
 
 ## Clone application
 
