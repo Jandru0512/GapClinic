@@ -38,11 +38,11 @@ npm install
 * Go to user-interface
 
 ```
-yarn
+yarn start
 ```
 or
 ```
-npm install
+npm start
 ```
 
 ## License
